@@ -1,3 +1,3 @@
-export const clearTodo = clear => {
-  type: CLEAR_TODOS, clear;
+export const clearTodo = () => {
+  type: CLEAR_TODOS;
 };

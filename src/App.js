@@ -12,7 +12,8 @@ import { InitialContext } from "./contexts/InitialContext";
 import "./App.css";
 
 function App() {
-  const [state, dispatch] = useReducer(initialReducer, initialState);
+  // const [state, dispatch] = useReducer(initialReducer, initialState);
+  // console.log("state", state);
 
   return (
     <div className="App">

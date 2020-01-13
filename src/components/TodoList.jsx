@@ -4,7 +4,6 @@ import { Todo } from "./Todo";
 
 export const TodoList = () => {
   const { todos } = useContext(InitialContext);
-
   return (
     <ul>
       {todos.map(todo => (

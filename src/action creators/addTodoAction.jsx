@@ -1,3 +1,6 @@
-export const addTodo = text => {
-  type: ADD_TODO, text;
+export const addTodo = input => {
+  return {
+    type: "ADD_TODO",
+    input
+  };
 };

@@ -1,7 +1,20 @@
+const newTodo = todo => {
+  return {
+    item: todo,
+    completed: false,
+    id: Date.now()
+  };
+};
+
 const initialReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TODO":
-      return console.log("ADD_TODO");
+      return (
+        console.log("ADD_TODO", "state", state, "action", action),
+        {
+          todos: [...state, newTodo(action.input)]
+        }
+      );
     case "TOGGLE_COMPLETED":
       console.log("TOGGLE_COMPLETED");
     case "CLEAR_TODOS":
