@@ -37,7 +37,9 @@ export const TodoForm = () => {
         value={input.input}
       />
       <button type="submit">Add Todo</button>
-      <button>Clear Completed</button>
+      <button onClick={() => dispatch({ type: "CLEAR_TODOS" })}>
+        Clear Completed
+      </button>
     </form>
   );
 };

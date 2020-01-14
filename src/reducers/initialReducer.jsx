@@ -27,7 +27,7 @@ const initialReducer = (state, action) => {
     case "CLEAR_TODOS":
       return {
         ...state,
-        todos: [...state.todos]
+        todos: state.todos.filter(e => e.completed === false)
       };
     default:
       return state;
