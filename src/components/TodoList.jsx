@@ -3,10 +3,12 @@ import { InitialContext } from "../contexts/InitialContext";
 import { Todo } from "./Todo";
 
 export const TodoList = () => {
-  const { todos } = useContext(InitialContext);
+  const { state } = useContext(InitialContext);
+  // console.log(state)
+
   return (
     <ul>
-      {todos.map(todo => (
+      {state.todos.map(todo => (
         <Todo key={todo.id} todo={todo} />
       ))}
     </ul>

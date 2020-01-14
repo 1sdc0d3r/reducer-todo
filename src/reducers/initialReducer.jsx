@@ -6,19 +6,29 @@ const newTodo = todo => {
   };
 };
 
+const markComplete = (state, id) => {
+  const task = state.todos.find(e => {
+    return e.id == id;
+  });
+  task.completed = !task.completed;
+  return task;
+};
+
 const initialReducer = (state, action) => {
   switch (action.type) {
     case "ADD_TODO":
-      return (
-        console.log("ADD_TODO", "state", state, "action", action),
-        {
-          todos: [...state, newTodo(action.input)]
-        }
-      );
+      // console.log("ADD_TODO", "state", state, "action", action);
+      return { ...state, todos: [...state.todos, newTodo(action.payload)] };
     case "TOGGLE_COMPLETED":
-      console.log("TOGGLE_COMPLETED");
+      markComplete(state, action.payload);
+      return {
+        ...state
+      };
     case "CLEAR_TODOS":
-      return console.log("CLEAR_TODOS");
+      return {
+        ...state,
+        todos: [...state.todos]
+      };
     default:
       return state;
   }

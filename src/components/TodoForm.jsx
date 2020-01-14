@@ -1,15 +1,15 @@
-import React, { useState, useContext, useReducer } from "react";
-// Reducers
-import { initialReducer, initialState } from "../reducers/initialReducer";
+import React, { useState, useContext } from "react";
+
 // Contexts
 import { InitialContext } from "../contexts/InitialContext";
 
 export const TodoForm = () => {
-  const { todos } = useContext(InitialContext);
-  const [state, dispatch] = useReducer(initialReducer, initialState);
+  const { dispatch } = useContext(InitialContext);
+
   const [input, setInput] = useState({
     input: ""
   });
+
   const onChangeHandler = evt => {
     setInput({
       [evt.target.name]: evt.target.value
@@ -18,13 +18,13 @@ export const TodoForm = () => {
 
   const onSubmitHandler = evt => {
     evt.preventDefault();
-    // initialReducer(todos, { type: "ADD_TODO", input: input.input });
-    // dispatch({ type: "TOGGLE_COMPLETED" })
-    // dispatch(initialReducer(todos, { type: "ADD_TODO", input: input.input }));
-
     setInput({
       input: ""
     });
+
+    if (input.input !== "") {
+      return dispatch({ type: "ADD_TODO", payload: input.input });
+    }
   };
 
   return (
@@ -37,6 +37,7 @@ export const TodoForm = () => {
         value={input.input}
       />
       <button type="submit">Add Todo</button>
+      <button>Clear Completed</button>
     </form>
   );
 };
